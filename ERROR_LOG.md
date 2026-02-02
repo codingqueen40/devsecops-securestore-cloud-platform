@@ -8,39 +8,46 @@ Ce fichier sert à capturer rapidement les erreurs rencontrées, le diagnostic, 
 
 ### YYYY-MM-DD — <TITRE COURT>
 
-**Contexte**  
+#### Contexte
+
 - Projet / composant :
 - Objectif :
 - Environnement : (local / VM / cloud)
 - Contrainte : (temps, droits, réseau…)
 
-**Commande / action**
+#### Commande / action
+
 ```bash
 # ce que j’ai fait
 ```
 
-**Erreur / Symptôme**
+#### Erreur / Symptôme
+
 - Message d’erreur exact :
 - Ce que j’observe :
 
-**Diagnostic**
+#### Diagnostic
+
 - Hypothèses :
 - Vérifications :
 ```bash
 # commandes de vérification
 ```
 
-**Fix / Résolution**
+#### Fix / Résolution
+
 ```bash
 # commandes correctives
 ```
 
-**Validation (preuve que c’est réglé)**
+#### Validation (preuve que c’est réglé)
+
 ```bash
 # commande + résultat attendu
 ```
 
-**Leçon / Prévention**
+#### Leçon / Prévention
+
 - Ce que je ferai directement la prochaine fois :
 - Runbook lié : (lien si existant)
 - Evidence : (captures / logs à archiver)
@@ -49,24 +56,28 @@ Ce fichier sert à capturer rapidement les erreurs rencontrées, le diagnostic, 
 
 ## 2026-02-01 — SSH : Permission denied (publickey) + host key changed
 
-**Contexte**  
+#### Contexte
+
 - Projet / composant : Lab Ubuntu (OrbStack) — accès SSH depuis macOS  
 - Objectif : établir un SSH sécurisé par clé, puis durcir (password off / root off)  
 - Environnement : macOS (client SSH) → Ubuntu 24.04 (VM OrbStack)  
 - Contrainte : la cible (domain OrbStack / IP) peut changer après clone/restart
 
-**Commande / action**
+#### Commande / action
+
 ```bash
 ssh -i ~/.ssh/orbstack_ed25519 grey972_c@ubuntu.orb.local
 # puis tests en verbose
 ssh -vvv -i ~/.ssh/orbstack_ed25519 grey972_c@ubuntu.orb.local
 ```
 
-**Erreur / Symptôme**
+#### Erreur / Symptôme
+
 - `Permission denied (publickey).`
 - Puis plus tard : `REMOTE HOST IDENTIFICATION HAS CHANGED!`
 
-**Diagnostic**
+#### Diagnostic
+
 - Vérifier si le port 22 est accessible sur la bonne IP (celle affichée dans OrbStack) :
 ```bash
 nc -vz 192.168.139.25 22
@@ -96,7 +107,8 @@ ssh-keygen -R ubuntu.orb.local
 ssh-keygen -R 192.168.139.25
 ```
 
-**Fix / Résolution**
+#### Fix / Résolution
+
 - Installer/activer OpenSSH si nécessaire :
 ```bash
 sudo apt update
@@ -122,7 +134,8 @@ PubkeyAuthentication yes
 sudo systemctl reload ssh
 ```
 
-**Validation (preuve que c’est réglé)**
+#### Validation (preuve que c’est réglé)
+
 - Depuis Ubuntu, confirmer les valeurs effectives :
 ```bash
 sudo sshd -T | egrep 'permitrootlogin|passwordauthentication|pubkeyauthentication'
@@ -141,7 +154,8 @@ ssh -v -i ~/.ssh/orbstack_ed25519 grey972_c@192.168.139.25
 # Authenticated ... using "publickey".
 ```
 
-**Leçon / Prévention**
+#### Leçon / Prévention
+
 - Toujours tester d’abord : IP + port 22 (`nc -vz <IP> 22`) avant d’accuser la clé.
 - Les clones/redémarrages peuvent changer le host key → nettoyer `known_hosts`.
 - Conserver un runbook “SSH access” et un clone baseline stable.
