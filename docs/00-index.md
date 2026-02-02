@@ -1,9 +1,11 @@
 # Documentation index
 
 ## Démarrage
+
 - Semaine 0 : préparation (repo, templates, CI, journal, error log)
 
 ## Documents clés
+
 - [`../JOURNAL.md`](../JOURNAL.md) — journal de bord hebdo
 - [`../ERROR_LOG.md`](../ERROR_LOG.md) — incidents / blocages / solutions
 - [`../tools/templates/runbook.md`](../tools/templates/runbook.md) — template runbook
@@ -12,4 +14,5 @@
 - [`../tools/templates/adr.md`](../tools/templates/adr.md) — template ADR
 
 ## Preuves (Evidence)
+
 - `evidence/00-week0/` : captures setup, CI, repo structure, etc.
