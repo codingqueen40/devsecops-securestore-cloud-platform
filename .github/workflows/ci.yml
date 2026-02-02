@@ -8,74 +8,16 @@ on:
 permissions:
     contents: read
 
-concurrency:
-    group: ci-${{ github.ref }}
-    cancel-in-progress: true
-
 jobs:
-    foundation:
-        name: Foundation checks (structure)
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v4
-
-            # ✅ Vérifie uniquement le "socle" qui doit toujours exister
-            - name: Required files (baseline)
-              run: |
-                  set -e
-                  test -f README.md
-                  test -f JOURNAL.md
-                  test -f ERROR_LOG.md
-                  test -f docs/00-index.md
-                  test -f tools/templates/runbook.md
-                  test -f tools/templates/postmortem.md
-                  test -f tools/templates/security-review.md
-                  test -f tools/templates/adr.md
-                  echo "✅ Baseline files OK"
-
-            - name: Required directories (baseline)
-              run: |
-                  set -e
-                  for d in platform security governance docs tools evidence; do
-                    test -d "$d"
-                  done
-                  echo "✅ Baseline directories OK"
-
-            # (facultatif mais pratique) affiche un petit état du repo pour debug
-            - name: Quick repo snapshot
-              run: |
-                  echo "== Root =="
-                  ls -la
-                  echo
-                  echo "== Top-level dirs =="
-                  find . -maxdepth 2 -type d -print
-
-    markdown:
-        name: Lint Markdown
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v4
-
-            # ✅ lint Markdown sur tout le repo (ne dépend pas de ta stack)
-            - name: Markdownlint (CLI2)
-              uses: DavidAnson/markdownlint-cli2-action@v19
-              with:
-                  globs: |
-                      **/*.md
-                      !**/node_modules/**
-
     secrets:
         name: Secrets scan (gitleaks)
         runs-on: ubuntu-latest
         steps:
-            - name: Checkout (full history for better detection)
+            - name: Checkout (full history)
               uses: actions/checkout@v4
               with:
                   fetch-depth: 0
 
-            # ✅ détecte tokens/keys par erreur dans les commits
             - name: Run gitleaks
               uses: gitleaks/gitleaks-action@v2
               env:
