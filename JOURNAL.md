@@ -13,6 +13,8 @@
 - Templates Markdown prêts
 - Workflow GitHub Actions opérationnel
 - Evidence initiale dans `evidence/00-week0/`
+- GitHub repo security baseline enabled: Secret Scanning (+ push protection), Dependabot alerts, CodeQL code scanning.
+- Evidence: `evidence/00-week0/2026-02-09_github-security`
 
 #### AWS — Compte Free Tier + IAM + MFA (terminé)
 
