@@ -40,6 +40,8 @@
 ### Notes / points appris
 - Standardiser la documentation dès le départ évite la dette plus tard.
 - Sécuriser la base (scan secrets + clés SSH) est prioritaire.
+- Password manager enabled (iCloud Keychain) + strong password generator used for new accounts.
+- Policy: unique passwords per service; evidence: evidence/00-week0/2026-02-09_password-manager
 
 ### Next (Semaine 1)
 - Démarrer le premier lab Linux/hardening (UFW, SSH, Fail2Ban) + runbook associé
