@@ -14,6 +14,8 @@ Monorepo fil rouge (2026–2028) pour construire une plateforme cloud-native sé
 - `docs/` : documentation et index  
 - `tools/` : scripts + templates Markdown  
 - `evidence/` : preuves par sprint/semaine (captures, logs, exports)
+- `cours/` : résumé cours
+- `flashcards/` : cartes de révisions
 
 ## Workflow
 - Chaque tâche importante => 1 trace dans `JOURNAL.md`

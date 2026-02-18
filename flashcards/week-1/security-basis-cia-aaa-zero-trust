@@ -1,0 +1,59 @@
+1. **Q:** Différence “catégorie” vs “type” de contrôle (security control) ?
+    
+    **R:** Catégories = *où/qui l’implémente* (technical/managerial/operational/physical). Types = *effet* (preventive/deterrent/detective/corrective/compensating/directive).
+    
+2. **Q:** Contrôle **technique (technical)** : définition + 2 exemples ?
+    
+    **R:** Implémenté via systèmes (OS controls, firewall, antivirus/automation).
+    
+3. **Q:** Contrôle **managérial (managerial)** : définition + 2 exemples ?
+    
+    **R:** Administratif lié au design/implémentation sécurité : policies, SOP/procédures.
+    
+4. **Q:** Contrôle **opérationnel (operational)** : définition + 2 exemples ?
+    
+    **R:** Implémenté par des personnes : security guards, awareness programs.
+    
+5. **Q:** Contrôle **physique (physical)** : définition + 2 exemples ?
+    
+    **R:** Limite l’accès physique : fences/locks, badge readers/guard shack.
+    
+6. **Q:** **Préventif (preventive)** vs **détectif (detective)** ?
+    
+    **R:** Preventive bloque l’accès ; detective identifie & journalise (logs/reports) sans forcément bloquer.
+    
+7. **Q:** **Correctif (corrective)** : objectif + exemple ?
+    
+    **R:** Après détection, reverse impact & continue ops (ex. restore from backups après ransomware).
+    
+8. **Q:** **Compensatoire (compensating)** : quand l’utiliser ?
+    
+    **R:** Quand le contrôle “idéal” n’est pas possible (temporaire/alternative) ex. firewall bloque une app au lieu de patch immédiat.
+    
+9. **Q:** Triade **CIA (confidentiality, integrity, availability)** : définitions ultra-courtes ?
+    
+    **R:** C=pas de divulgation ; I=pas de modification non détectée ; A=service accessible aux autorisés.
+    
+10. **Q:** 2 exemples de contrôles pour **confidentialité (confidentiality)** ?
+    
+    **R:** Encryption + access controls (et 2FA).
+    
+11. **Q:** 2 mécanismes clés pour **intégrité (integrity)** ?
+    
+    **R:** Hashing + digital signatures (certificats).
+    
+12. **Q:** 3 leviers pour **disponibilité (availability)** ?
+    
+    **R:** Redundancy, fault tolerance, patching (stabilité + fermeture failles).
+    
+13. **Q:** **AAA** : ordre logique et sens ?
+    
+    **R:** Identification → Authentication → Authorization → Accounting (logs d’usage).
+    
+14. **Q:** Différence **authentification (authentication)** vs **autorisation (authorization)** ?
+    
+    **R:** Auth = prouver identité ; AuthZ = définir accès après auth.
+    
+15. **Q:** **Zero Trust (ZT)** : 2 principes cœur + 2 composants ?
+    
+    **R:** Pas de confiance implicite + vérification continue/need-to-access & minimum privileges ; composants : Policy Engine/Policy Administrator + PEP (gatekeeper).
