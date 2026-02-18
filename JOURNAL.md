@@ -15,6 +15,7 @@
 - Evidence initiale dans `evidence/00-week0/`
 - GitHub repo security baseline enabled: Secret Scanning (+ push protection), Dependabot alerts, CodeQL code scanning.
 - Evidence: `evidence/00-week0/2026-02-09_github-security`
+- Main branch protection: ruleset 'protect-main' (no force-push, no deletion, PR required).
 
 #### AWS — Compte Free Tier + IAM + MFA (terminé)
 

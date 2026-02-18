@@ -1,0 +1,87 @@
+### 1) Contrôles de sécurité (security controls)
+
+But : **prévenir** les événements de sécurité, **minimiser l’impact**, **limiter les dégâts**
+Goal : **prevent** security incidents, **minimize impact**, **limit damage**
+
+**4 Catégories (categories)**
+
+- **Techniques (technical)** : contrôles via les systèmes (OS, pare-feu, antivirus, automatisation)
+- **Managériaux / Administratifs (managerial)** : conception & pilotage sécurité (politiques, procédures, SOP)
+- **Opérationnels (operational)** : contrôles réalisés par les personnes (gardes, sensibilisation)
+- **Physiques (physical)** : limitation d’accès physique (clôtures, serrures, badge readers)
+
+**6 Types (control types)**
+
+- **Préventif (preventive)** : bloque l’accès (“you shall not pass”) ex. règles firewall, serrures
+- **Dissuasion (deterrent)** : décourage sans bloquer directement ex. panneaux, accueil, avertissements
+- **Détectif (detective)** : identifie & journalise ex. logs, rapports de connexion, rondes, détecteurs
+- **Correctif (corrective)** : après détection, restaure/limite l’impact ex. restauration depuis backup, procédures d’incident
+- **Compensatoire (compensating)** : alternative/temporaires si contrôle “idéal” indispo ex. bloquer via firewall plutôt que patch immédiat
+- **Directif (directive)** : guide vers la conformité (souvent plus “faible”) ex. politiques, formation, panneau “Authorized Personnel Only”
+
+---
+
+### 2) Triade CIA (Confidentiality, Integrity, Availability)
+
+La triade **CIA** = fondamentaux de la sécurité
+The **CIA** triad = security fundamentals
+
+- **Confidentialité (confidentiality)** : empêcher la divulgation aux non-autorisés / prevent disclosure to unauthorized persons
+    
+    Ex : **chiffrement (encryption)**, **contrôles d’accès (access controls)**, **2FA (two-factor authentication)**
+    
+- **Intégrité (integrity)** : données non modifiables sans détection
+    
+    Ex : **hachage (hashing)**, **signatures numériques (digital signatures)**, certificats
+    
+- **Disponibilité (availability)** : accès pour les utilisateurs autorisés, quand nécessaire
+    
+    Ex : **redondance (redundancy)**, **tolérance aux pannes (fault tolerance)**, **patching (patching)** pour stabilité + fermeture de failles
+    
+
+---
+
+### 3) Non-répudiation (non-repudiation)
+
+Objectif : **ne pas pouvoir nier** une action/une déclaration (“proof of origin”)
+
+En pratique : signature numérique → prouve **intégrité** + **origine/authenticité** (authenticity)
+
+---
+
+### 4) AAA (Authentication, Authorization, and Accounting)
+
+**AAA** : cadre d’accès
+
+- **Identification (identification)** : “qui je prétends être” (souvent username)
+- **Authentification (authentication)** : preuve (mot de passe, facteurs)
+- **Autorisation (authorization)** : à quoi j’ai accès après auth
+- **Comptabilisation / Traçabilité (accounting)** : journaliser l’usage (heure login/logout, données échangées)
+
+**Authentifier des systèmes (authenticating systems)** : certificats signés pour prouver l’identité d’un device (plutôt que password stocké)
+
+**Modèles d’autorisation (authorization models)** : mettre une “abstraction” (rôles/attributs/orga) pour scaler vs relation directe user→ressource
+
+---
+
+### 5) Zero Trust (ZT) / Architecture Zero Trust (ZTA)
+
+**Alignement objectifs exam (SY0-701 1.1)** : Control plane + Data plane + composants (Policy Engine / Policy Administrator / PEP)
+
+**Principe** : rien n’est “trusted” par défaut ; **tout doit être vérifié** (MFA, chiffrement, permissions, firewalls, monitoring/analytics)
+
+NIST : paradigme où la confiance n’est **jamais implicite**, elle est **évaluée en continu** ; réduire l’accès au **besoin d’accès** (need-to-access) + **minimum privileges** ; limiter les mouvements latéraux
+
+**Plan de contrôle (control plane)**
+
+- **Identité adaptative (adaptive identity)** : décision d’accès selon contexte/risques
+- **Réduction de surface (threat scope reduction)** + **accès piloté par politique (policy-driven access control)**
+- **Point de décision (Policy Decision Point / PDP)** :
+    - **Policy Engine** : évalue et grant/deny/revoke
+    - **Policy Administrator** : pousse la décision vers le PEP / émet tokens/credentials
+
+**Plan de données (data plane)**
+
+- **Subject/System** (utilisateurs, applis, non-humains)
+- **PEP (Policy Enforcement Point)** : “gatekeeper” qui autorise/monitor/termine la connexion
+- **Zones de confiance implicite (implicit trust zones)** : segmentation logique pour appliquer/renforcer les politiques
