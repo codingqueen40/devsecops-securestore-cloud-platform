@@ -1,0 +1,8 @@
+uid=1000(ops) gid=1000(ops) groups=1000(ops),27(sudo),100(users)
+uid=1001(app) gid=1001(app) groups=1001(app),100(users)
+Matching Defaults entries for ops on REDACTED_HOST:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, use_pty
+
+User ops may run the following commands on REDACTED_HOST:
+    (ALL : ALL) ALL
+User app is not allowed to run sudo on REDACTED_HOST.
